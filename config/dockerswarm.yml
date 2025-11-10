@@ -26,13 +26,13 @@ scrape_configs:
         separator: ';'
         regex: '([^:]+):\d+;(\d+)'
         replacement: '${1}:${2}'
-      - source_labels: [ __meta_dockerswarm_service_mode, __meta_dockerswarm_node_hostname ]
+      - source_labels: [ __meta_dockerswarm_service_mode, __meta_dockerswarm_node_hostname, __meta_dockerswarm_service_name, __meta_dockerswarm_task_id ]
         target_label: instance
         separator: ';'
-        regex: 'global;(.*)'
-        replacement: '${1}'
-      - source_labels: [ __meta_dockerswarm_service_mode, __meta_dockerswarm_service_name ]
+        regex: 'global;(.*);(.*);(.*)'
+        replacement: '${1}.${2}.${3}'
+      - source_labels: [ __meta_dockerswarm_service_mode, __meta_dockerswarm_service_name, __meta_dockerswarm_task_id ]
         target_label: instance
         separator: ';'
-        regex: 'replicated;(.*)'
-        replacement: '${1}'
+        regex: 'replicated;(.*);(.*)'
+        replacement: '${1}.${2}'
