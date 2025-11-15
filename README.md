@@ -11,14 +11,14 @@ This repository provides a `Prometheus` image for the
 ## Usage
 
 __Name__  
-`ghcr.io/gaming-platform/docker-mysql:2.45`
+`ghcr.io/gaming-platform/docker-prometheus:3.7`
 
 __Configuration__  
 For `docker` service discovery, the container can be configured as follows:
 
 ```yaml
 prometheus:
-  image: ghcr.io/gaming-platform/docker-prometheus:2.45
+  image: ghcr.io/gaming-platform/docker-prometheus:3.7
   command: --config.file=/etc/prometheus/docker.yml
   volumes:
     - /var/run/docker.sock:/var/run/docker.sock
@@ -28,7 +28,7 @@ For `dockerswarm` service discovery, the container can be configured as follows:
 
 ```yaml
 prometheus:
-  image: ghcr.io/gaming-platform/docker-prometheus:2.45
+  image: ghcr.io/gaming-platform/docker-prometheus:3.7
   command: --config.file=/etc/prometheus/dockerswarm.yml
   volumes:
     - /var/run/docker.sock:/var/run/docker.sock
